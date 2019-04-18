@@ -33,43 +33,43 @@ import static org.junit.Assert.*;
 
 public class AlignerTest {
 
-    @Before
-    String testString = "One fish two fish red fish blue fish";
-    Aligner aligner;
-
     @Test
     public void leftTest() {
-        aligner = new LeftAligner();
+        Aligner aligner = new LeftAligner();
+        String testString = "One fish two fish red fish blue fish";
         assertEquals(
             "One fish two fish red fish blue fish",
-            leftAligner.format(Arrays.asList(testString.split(" ")), 40)
+            aligner.format(Arrays.asList(testString.split(" ")), 40)
         );
     }
 
     @Test
     public void rightTest() {
-        aligner = new RightAligner();
+        Aligner aligner = new RightAligner();
+        String testString = "One fish two fish red fish blue fish";
         assertEquals(
             "    One fish two fish red fish blue fish",
-            rightAligner.format(Arrays.asList(testString.split(" ")), 40)
+            aligner.format(Arrays.asList(testString.split(" ")), 40)
         );
     }
 
     @Test
     public void centerTest() {
-        aligner = new CenterAligner();
+        Aligner aligner = new CenterAligner();
+        String testString = "One fish two fish red fish blue fish";
         assertEquals(
             "  One fish two fish red fish blue fish",
-            centerAligner.format(Arrays.asList(testString.split(" ")), 40)
+            aligner.format(Arrays.asList(testString.split(" ")), 40)
         );
     }
 
     @Test
     public void justifyTest() {
-        aligner = new JustifyAligner();
+        Aligner aligner = new JustifyAligner();
+        String testString = "One fish two fish red fish blue fish";
         assertEquals(
             "One  fish  two  fish  red fish blue fish",
-            justifyAligner.format(Arrays.asList(testString.split(" ")), 40)
+            aligner.format(Arrays.asList(testString.split(" ")), 40)
         );
     }
 
