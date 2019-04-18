@@ -57,7 +57,7 @@ public class WrapAndAlign {
         int lineWidth = MAX_WIDTH;
         if (args.length > 1) {
             for (int i = 0; i < (args.length - 1); i++) {
-                if (args[i].equals("-w")) {
+                if (args[i].equals("-w") || args[i].equals("-width")) {
                     lineWidth = Integer.parseInt(args[i + 1]);
                 }
             }
