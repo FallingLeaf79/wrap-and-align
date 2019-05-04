@@ -71,5 +71,15 @@ public class AlignerTest {
         );
     }
 
+    @Test
+    public void justifyOneWordTest() {
+        Aligner aligner = new JustifyAligner();
+        String testString = "one";
+        assertEquals(
+            "one",
+            aligner.format(Arrays.asList(testString.split(" ")), 40)
+        );
+    }
+
 
 }
