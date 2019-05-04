@@ -43,10 +43,10 @@ public class JustifyAligner implements Aligner {
         StringBuilder result = new StringBuilder();
         int uniformSpaces = 0;
         int remainderSpaces = 0;
-        try {
+        if (spaceCount != 0) {
             uniformSpaces = (lineWidth - wordsLength) / spaceCount;
             remainderSpaces = (lineWidth - wordsLength) % spaceCount;
-        } catch(ArithmeticException e) {}
+        }
 
         for (String w : words) {
             result.append(w);
