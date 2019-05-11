@@ -31,34 +31,35 @@ public class WrapAndAlign {
     private static final int MAX_WIDTH = 50;
 
     public static void main(String[] args) {
+        boolean isWidth = false;
+        int lineWidth = MAX_WIDTH;
         Scanner input = new Scanner(System.in);
         ParagraphDetector pd = new ParagraphDetector(input);
+        Aligner aligner = new LeftAligner();
 
-        Aligner aligner;
-        if (args.length > 0) {
-            switch(args[0]) {
-                case "--right":
-                    aligner = new RightAligner();
-                    break;
-                case "--center":
-                case "--centre":
-                    aligner = new CenterAligner();
-                    break;
-                case "--justify":
-                    aligner = new JustifyAligner();
-                    break;
-                default:
-                    aligner = new LeftAligner();
-            }
-        } else {
-            aligner = new LeftAligner();
-        }
-
-        int lineWidth = MAX_WIDTH;
-        if (args.length > 1) {
-            for (int i = 0; i < (args.length - 1); i++) {
-                if (args[i].equals("-w") || args[i].equals("-width")) {
-                    lineWidth = Integer.parseInt(args[i + 1]);
+        for (String arg : args) {
+            if (arg.startsWith("--width")) {
+                String[] splitArg = arg.split("=");
+                lineWidth = Integer.parseInt(splitArg[1]);
+            } else if (isWidth) {
+                lineWidth = Integer.parseInt(arg);
+            } else {
+                switch(arg) {
+                    case "-w":
+                        isWidth = true;
+                        break;
+                    case "--right":
+                        aligner = new RightAligner();
+                        break;
+                    case "--center":
+                    case "--centre":
+                        aligner = new CenterAligner();
+                        break;
+                    case "--justify":
+                        aligner = new JustifyAligner();
+                        break;
+                    default:
+                        aligner = new LeftAligner();
                 }
             }
         }
